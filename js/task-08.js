@@ -17,13 +17,13 @@ formEl.addEventListener('submit', (event)=> {
     event.preventDefault();
     const emailEl = formEl.querySelector('input[type="email"]');
     const passwordEl = formEl.querySelector('input[type="password"]');
-    console.log(emailEl.value);
-    if ((emailEl.value==' ')||(passwordEl.value==' ')) {
+    if ((emailEl.value=='')||(passwordEl.value=='')) {
         alert("Всі поля повинні бути заповнені");
     } else {
-        const email = emailEl.value;
-        const password = passwordEl.value;
-        const loginObj = {[email] : password};
+        const loginObj = {
+            email : emailEl.value,
+            password: passwordEl.value,
+        };
         console.log(loginObj);
         emailEl.value = '';
         passwordEl.value = '';
