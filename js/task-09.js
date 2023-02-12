@@ -15,5 +15,5 @@ const spanEl = document.querySelector('span.color');
 btnEl.addEventListener('click', (event)=>{
   const color = getRandomHexColor();
   bodyEl.style.backgroundColor = color;
-  spanEl.textContent = `${color}`;
+  spanEl.textContent = color;
 })
