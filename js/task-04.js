@@ -5,7 +5,7 @@
 //3. Оновлюй інтерфейс новим значенням змінної counterValue.
 
 const spanEl = document.querySelector('span#value');
-let counterValue = spanEl.textContent;
+let counterValue = Number(spanEl.textContent);
 const btnMinusEl = document.querySelector('button[data-action=decrement]');
 const btnAddEl = document.querySelector('button[data-action=increment]');
 
