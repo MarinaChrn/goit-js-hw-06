@@ -23,17 +23,17 @@ const images = [
 const galleryEl = document.querySelector('.gallery');
 
 const imagesEl = images.map(image => {
-  //list.insertAdjacentHTML("beforebegin", "<h2>Popular technologies</h2>");
-  const liEl = document.createElement('li');
-  liEl.insertAdjacentHTML("afterbegin","<img class='image'></img>");
-  const imageEl = liEl.querySelector('.image');
-  imageEl.src = image.url;
-  imageEl.alt = image.alt; 
-  imageEl.style.height = "200px";
+  const liEl = document.createElement('li')
+  liEl.insertAdjacentHTML("afterbegin",`<img class='image' src='${image.url}' url='${image.alt}' height='200px'></img>`);
+  // const imageEl = liEl.querySelector('.image');
+  // imageEl.src = image.url;
+  // imageEl.alt = image.alt; 
+  // imageEl.style.height = "200px";
   liEl.style.listStyleType = 'none';
-  liEl.append(imageEl);
-  galleryEl.append(liEl);
- })
+  // liEl.append(imageEl);
+  // galleryEl.append(liEl);
+ }).join('');
 
+console.log(imagesEl);
 galleryEl.style.display = 'flex';
 galleryEl.style.gap = '20px';

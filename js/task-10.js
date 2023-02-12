@@ -37,17 +37,19 @@ const createBoxes = (amount) => {
 }
 
 const destroyBoxes = () => {
-  const allDivEl = collectionEl.querySelectorAll('div')
-  for (let i=0;i<allDivEl.length; i+=1) {
-    const deleteEL = allDivEl[i];
-    deleteEL.remove();
-  }
+  const newCollectionEl = document.querySelector('div#boxes');
+  console.log(newCollectionEl);
+  // const allDivEl = document.querySelectorAll('div#boxes.div')
+  // console.log(allDivEl);
+  // allDivEl.innerHTML = ' ';
+  // console.log(collectionEl)
 }
 
 const inputEl = document.querySelector('input[type="number"]')
 inputEl.addEventListener('blur', (event)=> {
   const amount = event.currentTarget.value;
   btnCreateEl.addEventListener('click', createBoxes(amount));
+  btnCreateEl.amount = '';
 })
 
 const btnCreateEl = document.querySelector('button[data-create]');
