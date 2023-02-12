@@ -13,4 +13,8 @@ inputEl.addEventListener('blur', (event)=> {
     } else {
         inputEl.classList.add("invalid");
     }
-})
+});
+inputEl.addEventListener('focus', (event)=> {
+    inputEl.classList.remove("invalid");
+    inputEl.classList.remove("valid");
+});
