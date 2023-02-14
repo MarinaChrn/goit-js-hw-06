@@ -20,38 +20,31 @@ function getRandomHexColor() {
 //2. Створи функцію destroyBoxes(), яка очищає вміст div#boxes,
 // у такий спосіб видаляючи всі створені елементи.
 
-const collectionEl = document.querySelector('div#boxes');
+const controls = document.querySelector('controls');
+const inputEl = document.querySelector('[type="number"]');
+const createBtnEl = document.querySelector('button[data-create]');
+const destroyBtnEl = document.querySelector('button[data-destroy]');
+const boxesEl = document.querySelector('#boxes');
 
-const createBoxes = (amount) => {
-  for (let i=0;i<amount;i+=1) {
-    const divEl = document.createElement('div');
-    const boxSize = (i*10+30);
-    divEl.style.width = boxSize+"px";
-    divEl.style.height = boxSize+"px";
-    const color = getRandomHexColor();
-    divEl.style.backgroundColor = color;
-    collectionEl.append(divEl);
-    
+createBtnEl.addEventListener('click', () => {
+  createBoxes(inputEl.value);
+  inputEl.value = '';
+});
+
+destroyBtnEl.addEventListener('click', destroyBoxes);
+
+function destroyBoxes() {
+  inputEl.value = '';
+  boxesEl.innerHTML = '';
+}
+
+function createBoxes(amount) {
+  let size = 30;
+  const boxesArr = [];
+  for (let i = 0; i < amount; i += 1) {
+    size += 10 * i;
+    const div = `<div class="item" style="display: block; background-color: ${getRandomHexColor()}; width: ${size}px; height: ${size}px;"></div>`;
+    boxesArr.push(div);
   }
-  return collectionEl;
+  boxesEl.insertAdjacentHTML('beforeend', boxesArr.join(''));
 }
-
-const destroyBoxes = () => {
-  const newCollectionEl = document.querySelector('div#boxes');
-  console.log(newCollectionEl);
-  // const allDivEl = document.querySelectorAll('div#boxes.div')
-  // console.log(allDivEl);
-  // allDivEl.innerHTML = ' ';
-  // console.log(collectionEl)
-}
-
-const inputEl = document.querySelector('input[type="number"]')
-inputEl.addEventListener('blur', (event)=> {
-  const amount = event.currentTarget.value;
-  btnCreateEl.addEventListener('click', createBoxes(amount));
-  btnCreateEl.amount = '';
-})
-
-const btnCreateEl = document.querySelector('button[data-create]');
-const btnDestroyEl = document.querySelector('button[data-destroy]');
-btnDestroyEl.addEventListener('click', destroyBoxes());
